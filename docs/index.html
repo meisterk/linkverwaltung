@@ -10,18 +10,29 @@
 </head>
 
 <body>
-    <div class="container">
+    <div id='app' class="container">
         <header>
             <h1>Linkverwaltung</h1>
         </header>
         <main>
             <ul class="list-group">
-                <li class="list-group-item"><a href="http://kohnlehome.de">kohnlehome.de</a></li>
-                <li class="list-group-item"><a href="https://gbsschulen.de">Offizielle Website der GBS</a></li>
-                <li class="list-group-item"><a href="https://stackoverflow.com/">stackoverflow</a></li>
+                <li class="list-group-item" v-for="link in links"><a :href="link.url">{{link.linktext}}</a></li>
             </ul>
         </main>
         <footer class="alert alert-success">Diese Links werden wurden gesammelt von Franz Kohnle.</footer>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            const app = new Vue({
+                el: '#app',
+                data: {
+                    links: [
+                        { linktext: 'kohnlehome.de', url: 'http://kohnlehome.de' },
+                        { linktext: 'Offizielle Website der GBS', url: 'https://gbsschulen.de' },
+                        { linktext: 'stackoverflow', url: 'stackoverflow' }
+                    ]
+                }
+            });
+        </script>
     </div>
 </body>
 
