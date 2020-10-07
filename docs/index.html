@@ -20,20 +20,21 @@
             </ul>
         </main>
         <footer class="alert alert-success">Diese Links werden wurden gesammelt von Franz Kohnle.</footer>
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script>
-            const app = new Vue({
-                el: '#app',
-                data: {
-                    links: [
-                        { linktext: 'kohnlehome.de', url: 'http://kohnlehome.de' },
-                        { linktext: 'Offizielle Website der GBS', url: 'https://gbsschulen.de' },
-                        { linktext: 'stackoverflow', url: 'stackoverflow' }
-                    ]
-                }
-            });
-        </script>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                links: [
+                    { linktext: 'kohnlehome.de', url: 'http://kohnlehome.de' },
+                    { linktext: 'Offizielle Website der GBS', url: 'https://gbsschulen.de' },
+                    { linktext: 'Tagesschau', url: 'https://tagesschau.de' },
+                    { linktext: 'stackoverflow', url: 'stackoverflow' }
+                ]
+            }
+        });
+    </script>
 </body>
 
 </html>
