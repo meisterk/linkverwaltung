@@ -20,7 +20,7 @@
                     <a :href="link.url">{{link.linktext}}</a>
                     <div>
                         <span class="badge badge-primary">{{link.votes}}</span>
-                        <button class="btn btn-primary btn-sm">+</button>
+                        <button class="btn btn-primary btn-sm" @click="upvote(link.id)">+</button>
                     </div>
                 </li>
             </ul>
@@ -33,11 +33,16 @@
             el: '#app',
             data: {
                 links: [
-                    { linktext: 'kohnlehome.de', url: 'http://kohnlehome.de', votes: 7 },
-                    { linktext: 'Offizielle Website der GBS', url: 'https://gbsschulen.de', votes: 3 },
-                    { linktext: 'Tagesschau', url: 'https://tagesschau.de', votes: 25 },
-                    { linktext: 'stackoverflow', url: 'stackoverflow', votes: 341 }
+                    { id: 0, linktext: 'kohnlehome.de', url: 'http://kohnlehome.de', votes: 7 },
+                    { id: 1, linktext: 'Offizielle Website der GBS', url: 'https://gbsschulen.de', votes: 3 },
+                    { id: 2, linktext: 'Tagesschau', url: 'https://tagesschau.de', votes: 25 },
+                    { id: 3, linktext: 'stackoverflow', url: 'stackoverflow', votes: 341 }
                 ]
+            },
+            methods: {
+                upvote: function (id) {
+                    this.links[id].votes++;
+                }
             }
         });
     </script>
