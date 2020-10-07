@@ -33,15 +33,25 @@
             el: '#app',
             data: {
                 links: [
-                    { id: 0, linktext: 'kohnlehome.de', url: 'http://kohnlehome.de', votes: 7 },
+                    { id: 0, linktext: 'kohnlehome.de', url: 'http://kohnlehome.de', votes: 1 },
                     { id: 1, linktext: 'Offizielle Website der GBS', url: 'https://gbsschulen.de', votes: 3 },
-                    { id: 2, linktext: 'Tagesschau', url: 'https://tagesschau.de', votes: 25 },
-                    { id: 3, linktext: 'stackoverflow', url: 'stackoverflow', votes: 341 }
+                    { id: 2, linktext: 'Tagesschau', url: 'https://tagesschau.de', votes: 4 },
+                    { id: 3, linktext: 'stackoverflow', url: 'stackoverflow', votes: 2 }
                 ]
             },
             methods: {
                 upvote: function (id) {
-                    this.links[id].votes++;
+                    //this.links[id].votes++; Funktioniert nicht, wenn umsortiert wurde
+                    clickedLink = this.links.find(link => link.id === id);
+                    clickedLink.votes++;
+                    this.sortieren();
+                },
+                sortieren: function () {
+                    this.links.sort(
+                        function (link1, link2) {
+                            return link2.votes - link1.votes;
+                        }
+                    );
                 }
             }
         });
