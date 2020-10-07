@@ -16,7 +16,8 @@
         </header>
         <main>
             <ul class="list-group">
-                <li class="list-group-item" v-for="link in links"><a :href="link.url">{{link.linktext}}</a></li>
+                <li class="list-group-item" v-for="link in links"><a :href="link.url">{{link.linktext}}</a>
+                    <span class="badge badge-primary">{{link.votes}}</span></li>
             </ul>
         </main>
         <footer class="alert alert-success">Diese Links werden wurden gesammelt von Franz Kohnle.</footer>
@@ -27,10 +28,10 @@
             el: '#app',
             data: {
                 links: [
-                    { linktext: 'kohnlehome.de', url: 'http://kohnlehome.de' },
-                    { linktext: 'Offizielle Website der GBS', url: 'https://gbsschulen.de' },
-                    { linktext: 'Tagesschau', url: 'https://tagesschau.de' },
-                    { linktext: 'stackoverflow', url: 'stackoverflow' }
+                    { linktext: 'kohnlehome.de', url: 'http://kohnlehome.de', votes: 7 },
+                    { linktext: 'Offizielle Website der GBS', url: 'https://gbsschulen.de', votes: 3 },
+                    { linktext: 'Tagesschau', url: 'https://tagesschau.de', votes: 25 },
+                    { linktext: 'stackoverflow', url: 'stackoverflow', votes: 341 }
                 ]
             }
         });
