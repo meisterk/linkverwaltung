@@ -37,7 +37,7 @@
                     <input v-model="newUrl" class="form-control" id="inputUrl" type="text" placeholder="Url">
                 </div>
                 <div class="col-auto">
-                    <button @click="newLink" class="btn btn-primary mb-1">Hinzufügen</button>
+                    <button @click="hinzufuegen" class="btn btn-primary mb-1">Hinzufügen</button>
                 </div>
             </fieldset>
             <footer class="border alert alert-success">Diese Links werden wurden gesammelt von Franz Kohnle.
@@ -73,11 +73,17 @@
                         }
                     );
                 },
-                newLink() {
-                    newLink = { id: this.nextId, linktext: this.newName, url: this.newUrl, votes: 0 };
-                    this.nextId++;
-                    this.links.push(newLink);
-                    this.sortieren();
+                hinzufuegen() {
+                    if (this.newName != '' && this.newUrl != '') {
+                        const newLink = {
+                            id: this.nextId,
+                            linktext: this.newName,
+                            url: this.newUrl,
+                            votes: 0
+                        }
+                        this.nextId = this.nextId + 1;
+                        this.links.push(newLink);
+                    }
                 }
             },
             mounted() {
