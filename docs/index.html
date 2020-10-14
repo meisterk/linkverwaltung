@@ -34,7 +34,7 @@
                     <label for="inputName">Url</label>
                     <input class="form-control" id="inputUrl" type="text">
                 </div>
-                <button class="btn btn-primary">Hinzufügen</button>
+                <button @click="newLink" class="btn btn-primary mb-1">Hinzufügen</button>
             </fieldset>
             <footer class="container border alert alert-success">Diese Links werden wurden gesammelt von Franz Kohnle.
             </footer>
@@ -53,18 +53,21 @@
                 ]
             },
             methods: {
-                upvote: function (id) {
+                upvote(id) {
                     //this.links[id].votes++; Funktioniert nicht, wenn umsortiert wurde
                     clickedLink = this.links.find(link => link.id === id);
                     clickedLink.votes++;
                     this.sortieren();
                 },
-                sortieren: function () {
+                sortieren() {
                     this.links.sort(
                         function (link1, link2) {
                             return link2.votes - link1.votes;
                         }
                     );
+                },
+                newLink() {
+                    console.log('NEW');
                 }
             },
             mounted() {
