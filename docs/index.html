@@ -30,9 +30,9 @@
                 <div class="form-group">
                     <legend>Neuer Link</legend>
                     <label for="inputName">Name</label>
-                    <input class="form-control" id="inputName" type="text">
-                    <label for="inputName">Url</label>
-                    <input class="form-control" id="inputUrl" type="text">
+                    push <input v-model="newName" class="form-control" id="inputName" type="text">
+                    <label for="inputUrl">Url</label>
+                    <input v-model="newUrl" class="form-control" id="inputUrl" type="text">
                 </div>
                 <button @click="newLink" class="btn btn-primary mb-1">Hinzufügen</button>
             </fieldset>
@@ -50,7 +50,10 @@
                     { id: 1, linktext: 'Offizielle Website der GBS', url: 'https://gbsschulen.de', votes: 3 },
                     { id: 2, linktext: 'Tagesschau', url: 'https://tagesschau.de', votes: 4 },
                     { id: 3, linktext: 'stackoverflow', url: 'stackoverflow', votes: 2 }
-                ]
+                ],
+                nextId: 4,
+                newName: '',
+                newUrl: ''
             },
             methods: {
                 upvote(id) {
@@ -67,7 +70,10 @@
                     );
                 },
                 newLink() {
-                    console.log('NEW');
+                    newLink = { id: this.nextId, linktext: this.newName, url: this.newUrl, votes: 0 };
+                    this.nextId++;
+                    this.links.push(newLink);
+                    this.sortieren();
                 }
             },
             mounted() {
