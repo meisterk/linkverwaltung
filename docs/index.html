@@ -44,20 +44,21 @@
             </footer>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
     <script>
-        const app = new Vue({
-            el: '#app',
-            data: {
-                links: [
-                    { id: 0, linktext: 'kohnlehome.de', url: 'http://kohnlehome.de', votes: 1 },
-                    { id: 1, linktext: 'Offizielle Website der GBS', url: 'https://gbsschulen.de', votes: 3 },
-                    { id: 2, linktext: 'Tagesschau', url: 'https://tagesschau.de', votes: 4 },
-                    { id: 3, linktext: 'stackoverflow', url: 'stackoverflow', votes: 2 }
-                ],
-                nextId: 4,
-                newName: '',
-                newUrl: ''
+        const LinklisteApp = {
+            data() {
+                return {
+                    links: [
+                        { id: 0, linktext: 'kohnlehome.de', url: 'http://kohnlehome.de', votes: 1 },
+                        { id: 1, linktext: 'Offizielle Website der GBS', url: 'https://gbsschulen.de', votes: 3 },
+                        { id: 2, linktext: 'Tagesschau', url: 'https://tagesschau.de', votes: 4 },
+                        { id: 3, linktext: 'stackoverflow', url: 'stackoverflow', votes: 2 }
+                    ],
+                    nextId: 4,
+                    newName: '',
+                    newUrl: ''
+                }
             },
             methods: {
                 upvote(id) {
@@ -89,7 +90,8 @@
             mounted() {
                 this.sortieren();
             }
-        });
+        };
+        Vue.createApp(LinklisteApp).mount('#app');
     </script>
 </body>
 
