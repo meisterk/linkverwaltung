@@ -25,7 +25,20 @@
                 </li>
             </ul>
         </main>
-        <footer class="alert alert-success">Diese Links werden wurden gesammelt von Franz Kohnle.</footer>
+        <div class="fixed-bottom">
+            <fieldset class="container border mt-2 mb-2">
+                <div class="form-group">
+                    <legend>Neuer Link</legend>
+                    <label for="inputName">Name</label>
+                    <input class="form-control" id="inputName" type="text">
+                    <label for="inputName">Url</label>
+                    <input class="form-control" id="inputUrl" type="text">
+                </div>
+                <button class="btn btn-primary">Hinzufügen</button>
+            </fieldset>
+            <footer class="container border alert alert-success">Diese Links werden wurden gesammelt von Franz Kohnle.
+            </footer>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
