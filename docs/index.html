@@ -25,18 +25,22 @@
                 </li>
             </ul>
         </main>
-        <div class="fixed-bottom">
-            <fieldset class="container border mt-2 mb-2">
-                <div class="form-group">
-                    <legend>Neuer Link</legend>
-                    <label for="inputName">Name</label>
-                    push <input v-model="newName" class="form-control" id="inputName" type="text">
-                    <label for="inputUrl">Url</label>
-                    <input v-model="newUrl" class="form-control" id="inputUrl" type="text">
+        <div class="fixed-bottom container">
+            <fieldset class="form-row align-items-center border mb-1">
+                <legend>Neuer Link</legend>
+                <div class="col-auto">
+                    <label class="sr-only" for="inputName">Name</label>
+                    <input v-model="newName" class="form-control" id="inputName" type="text" placeholder="Name">
                 </div>
-                <button @click="newLink" class="btn btn-primary mb-1">Hinzufügen</button>
+                <div class="col-auto">
+                    <label class="sr-only" for="inputUrl">Url</label>
+                    <input v-model="newUrl" class="form-control" id="inputUrl" type="text" placeholder="Url">
+                </div>
+                <div class="col-auto">
+                    <button @click="newLink" class="btn btn-primary mb-1">Hinzufügen</button>
+                </div>
             </fieldset>
-            <footer class="container border alert alert-success">Diese Links werden wurden gesammelt von Franz Kohnle.
+            <footer class="border alert alert-success">Diese Links werden wurden gesammelt von Franz Kohnle.
             </footer>
         </div>
     </div>
