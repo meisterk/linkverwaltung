@@ -7,6 +7,7 @@
     <title>Kohnles Linkverwaltung</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
 </head>
 
 <body>
@@ -20,7 +21,10 @@
                     <a :href="link.url">{{link.linktext}}</a>
                     <div>
                         <span class="badge badge-primary">{{link.votes}}</span>
-                        <button class="btn btn-primary btn-sm" @click="upvote(link.id)">+</button>
+                        <button class="btn btn-primary btn-sm ml-1" @click="upvote(link.id)"><i
+                                class="lni lni-thumbs-up"></i></button>
+                        <button class="btn btn-danger btn-sm ml-1" @click="deleteLink(link.id)"><i
+                                class="lni lni-trash"></i></button>
                     </div>
                 </li>
             </ul>
@@ -62,10 +66,15 @@
             },
             methods: {
                 upvote(id) {
+                    console.log('+');
                     //this.links[id].votes++; Funktioniert nicht, wenn umsortiert wurde
                     clickedLink = this.links.find(link => link.id === id);
                     clickedLink.votes++;
                     this.sortieren();
+                },
+                deleteLink(id) {
+                    let index = this.links.findIndex(link => link.id === id);
+                    this.links.splice(index, 1);
                 },
                 sortieren() {
                     this.links.sort(
