@@ -16,6 +16,22 @@
             <h1>Linkverwaltung</h1>
         </header>
         <main>
+            <div class="border mb-2 bg-light p-2">
+                <legend>Neuer Link</legend>
+                <div class="form-group">
+                    <label for="inputName">Name</label>
+                    <input v-model="newName" class="form-control" id="inputName" type="text" placeholder="Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="inputUrl">Url</label>
+                    <input v-model="newUrl" class="form-control" id="inputUrl" type="text" placeholder="Url">
+                </div>
+
+                <button @click="hinzufuegen" class="btn btn-primary mb-1">Hinzufügen</button>
+
+
+            </div>
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between" v-for="link in links">
                     <a :href="link.url">{{link.linktext}}</a>
@@ -29,22 +45,8 @@
                 </li>
             </ul>
         </main>
-        <div class="container fixed-bottom footer">
-            <fieldset class="form-row align-items-center border mb-1">
-                <legend>Neuer Link</legend>
-                <div class="col-auto">
-                    <label class="sr-only" for="inputName">Name</label>
-                    <input v-model="newName" class="form-control" id="inputName" type="text" placeholder="Name">
-                </div>
-                <div class="col-auto">
-                    <label class="sr-only" for="inputUrl">Url</label>
-                    <input v-model="newUrl" class="form-control" id="inputUrl" type="text" placeholder="Url">
-                </div>
-                <div class="col-auto">
-                    <button @click="hinzufuegen" class="btn btn-primary mb-1">Hinzufügen</button>
-                </div>
-            </fieldset>
-            <footer class="border alert alert-success">Diese Links werden wurden von Franz Kohnle gesammelt.
+        <div class="footer mt-2">
+            <footer class="border alert alert-info">Diese Links werden wurden von Franz Kohnle gesammelt.
             </footer>
         </div>
     </div>
@@ -73,7 +75,9 @@
                     this.sortieren();
                 },
                 deleteLink(id) {
+                    // index des zu löschenden Links ermitteln
                     let index = this.links.findIndex(link => link.id === id);
+                    // Element an der Stelle index aus Array entfernen
                     this.links.splice(index, 1);
                 },
                 sortieren() {
