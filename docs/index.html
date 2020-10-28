@@ -58,9 +58,7 @@
                 return {
                     links: [
                         { id: 0, linktext: 'kohnlehome.de', url: 'http://kohnlehome.de', votes: 1 },
-                        { id: 1, linktext: 'Offizielle Website der GBS', url: 'https://gbsschulen.de', votes: 3 },
-                        { id: 2, linktext: 'Tagesschau', url: 'https://tagesschau.de', votes: 4 },
-                        { id: 3, linktext: 'stackoverflow', url: 'stackoverflow', votes: 2 }
+                        { id: 1, linktext: 'Offizielle Website der GBS', url: 'https://gbsschulen.de', votes: 3 }
                     ],
                     nextId: 4,
                     newName: '',
@@ -95,7 +93,10 @@
                         const linksString = localStorage.getItem('links');
                         this.links = JSON.parse(linksString);
                     } else {
-                        this.links = [];
+                        this.links = [
+                            { id: 0, linktext: 'kohnlehome.de', url: 'http://kohnlehome.de', votes: 1 },
+                            { id: 1, linktext: 'Offizielle Website der GBS', url: 'https://gbsschulen.de', votes: 3 }
+                        ];
                     }
                 },
                 speichern() {
