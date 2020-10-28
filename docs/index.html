@@ -74,12 +74,14 @@
                     clickedLink = this.links.find(link => link.id === id);
                     clickedLink.votes++;
                     this.sortieren();
+                    this.speichern();
                 },
                 deleteLink(id) {
                     // index des zu löschenden Links ermitteln
                     let index = this.links.findIndex(link => link.id === id);
                     // Element an der Stelle index aus Array entfernen
                     this.links.splice(index, 1);
+                    this.speichern();
                 },
                 sortieren() {
                     this.links.sort(
@@ -87,6 +89,18 @@
                             return link2.votes - link1.votes;
                         }
                     );
+                },
+                laden() {
+                    if (localStorage.getItem('links')) {
+                        const linksString = localStorage.getItem('links');
+                        this.links = JSON.parse(linksString);
+                    } else {
+                        this.links = [];
+                    }
+                },
+                speichern() {
+                    const linksString = JSON.stringify(this.links);
+                    localStorage.setItem('links', linksString);
                 },
                 hinzufuegen() {
                     if (this.newName != '' && this.newUrl != '') {
@@ -98,10 +112,12 @@
                         }
                         this.nextId = this.nextId + 1;
                         this.links.push(newLink);
+                        this.speichern();
                     }
                 }
             },
             mounted() {
+                this.laden();
                 this.sortieren();
             }
         };
